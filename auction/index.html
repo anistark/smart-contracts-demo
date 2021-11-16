@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Contracts Demo - Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css">
+    <link rel="stylesheet" href="../assets/css/loading.css">
 </head>
 <body>
     <header class="text-gray-700 body-font border-b border-gray-200">
@@ -17,14 +18,14 @@
             <span class="ml-3 text-xl">Auction Demo</span>
           </a>
           <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <a class="mr-5 hover:text-gray-900" href="/#demos">Demos</a>
+            <a class="mr-5 hover:text-gray-900" href="#auction">Simple Auction Demo</a>
           </nav>
         </div>
     </header>
     <section class="text-gray-700 body-font">
         <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
             <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Auction</h1>
+                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Simple Auction</h1>
                 <p class="mb-8 leading-relaxed">Open Auctions are where all items are displayed in public and the bids are also visible.</p>
             </div>
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
@@ -32,15 +33,29 @@
             </div>
         </div>
     </section>
-    <section class="text-gray-700 body-font border-t border-gray-200" id="demos">
+    <section class="text-gray-700 body-font border-t border-gray-200" id="auction">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Open Auction</h1>
             <p class="lg:w-1/2 w-full leading-relaxed text-base">Let's do some bidding...</p>
             </div>
-            <div class="flex flex-wrap -m-4">
-            demo
+            <div class="flex justify-center items-center">
+                <form class="w-full max-w-xs bg-white flex flex-col py-5 px-8 rounded-lg shadow-lg">
+                    <label class="text-gray-700 font-bold py-2" for="">Highest Bid so far: <span id="highest-bid-amount"></span> <span id="highest-bid-unit">Mi</span></label>
+                    <label class="text-gray-700 font-bold py-2" for="">Total Bids so far: <span id="total-bid-count"></span></label>
+                    <label class="text-gray-700 font-bold py-2" for="">Place Bid (in Mi)</label>
+                    <input class="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline" type="number" min="0" placeholder="99" id="auction-bid-amount">
+                    <div class="flex justify-between items-center my-4">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4" id="btn-add-bid" type="button">
+                        Add my Bid
+                    </button>
+                    <!-- <a class="text-blue-600 hover:text-blue-800 font-bold" href="#">
+                        Support?
+                    </a> -->
+                    </div>
+                </form>
             </div>
+              
         </div>
     </section>
     <footer class="text-gray-700 body-font">
@@ -49,12 +64,18 @@
             <p class="text-gray-500 text-sm text-center sm:text-left">Made with 💙 —
                 <a href="https://twitter.com/kranirudha" class="text-gray-600 ml-1" target="_blank" rel="noopener noreferrer">@kranirudha</a>
             </p>
-            <span class="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">Original Design by <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" target="_blank" rel="noopener noreferrer">@knyttneve</a></span>
+            <!-- <span class="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">Original Design by <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" target="_blank" rel="noopener noreferrer">@knyttneve</a></span> -->
             </div>
         </div>
     </footer>
     <a href="https://github.com/anistark/smart-contracts-demo" class="rounded-full w-12 h-12 bg-gray-100 fixed bottom-0 right-0 flex items-center justify-center text-gray-800 mr-8 mb-8 shadow-sm border-gray-300 border" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
     </svg></a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1/web3.min.js" integrity="sha512-5erpERW8MxcHDF7Xea9eBQPiRtxbse70pFcaHJuOhdEBQeAxGQjUwgJbuBDWve+xP/u5IoJbKjyJk50qCnMD7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/@metamask/legacy-web3@latest/dist/metamask.web3.js"></script> -->
+    <script src="../assets/js/web3modal.js"></script>
+    <script src="assets/js/auction.js"></script>
 </body>
 </html>
