@@ -3,48 +3,27 @@ let svgHtml = '<svg version="1.1" id="inline-loader" xmlns="http://www.w3.org/20
 
 (function () {
     // Loading Icons
-    document.getElementById("highest-bid-amount").innerHTML = svgHtml;
     document.getElementById("total-bid-count").innerHTML = svgHtml;
+    document.getElementById("highest-bid-amount").innerHTML = svgHtml;
+    document.getElementById("highest-bid-address").innerHTML = svgHtml;
 
     // Fetch current state.
     // fetchCurrentState()
 })();
 
 window.addEventListener('load', async () => {
-    // Check if Web3 has been injected by the browser
-    // if (window.ethereum) {
-    //     window.web3 = new Web3(window.ethereum);
-    //     try {
-    //         await window.ethereum.enable();
-    //         console.log('Ethereum Provider Detected! All Good!')
-    //     } catch (err) {
-    //         console.log('User denied account access', err)
-    //     }
-    // } else if (window.Web3) {
-    //     window.web3 = new Web3(web3.currentProvider)
-    //     // await window.ethereum.send('eth_requestAccounts');
-    //     // window.web3 = new Web3(window.ethereum);
-    //     console.log("defaultAccount:", window.web3.eth.getAccounts());
-    //     console.log('Web3 Provider Detected! All Good!')
-    // } else {
-    //     console.log('No Metamask (or other Web3 Provider) installed')
-    // }
-
     if (window.ethereum) {
         window.web3 = new Web3(window.ethereum);
-        console.log('1');
-        try {
-            console.log('2');
+        try{
             // ask user for permission
-            window.ethereum.enable()
+            window.ethereum.enable();
             // user approved permission
         } catch (error) {
             // user rejected permission
-            console.log('user rejected permission')
+            console.log('user rejected permission');
         }
     }
     else if (window.Web3) {
-        console.log('3');
         window.web3 = new Web3(window.Web3.currentProvider)
         // no need to ask for permission
     }
@@ -53,18 +32,19 @@ window.addEventListener('load', async () => {
     }
 
     if (window.web3 && window.web3.currentProvider) {
-        console.log ('currentProvider:', window.web3.currentProvider);
+        console.log ('selected address:', window.web3.currentProvider.selectedAddress);
     } else {
         console.log('Web3 Not Injected! 😢');
     }
 })
 
 function initPayButton() {
-    const paymentAddress = '0x48e28C1681BBb92a2E5874113bc740cC11A0FD7a';
+    const paymentAddress = '0x3635Fc964e6fb314627587e7896387D6E63b1baf';
     const amountEth = $('#auction-bid-amount').val();
     console.log('to:', paymentAddress, "->", amountEth, 'eth');
     window.web3.eth.sendTransaction({
         to: paymentAddress,
+        from: window.web3.currentProvider.selectedAddress,
         value: window.web3.utils.toWei(amountEth, 'ether')
     }, (err, transactionId) => {
         if  (err) {

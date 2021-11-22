@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.favicon.cc/logo3d/601819.png">
     <title>Smart Contracts Demo - Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css">
     <link rel="stylesheet" href="../assets/css/loading.css">
@@ -41,10 +42,14 @@
             </div>
             <div class="flex justify-center items-center">
                 <form class="w-full max-w-xs bg-white flex flex-col py-5 px-8 rounded-lg shadow-lg">
-                    <label class="text-gray-700 font-bold py-2" for="">Highest Bid so far: <span id="highest-bid-amount"></span> <span id="highest-bid-unit">Mi</span></label>
+
                     <label class="text-gray-700 font-bold py-2" for="">Total Bids so far: <span id="total-bid-count"></span></label>
-                    <label class="text-gray-700 font-bold py-2" for="">Place Bid (in Mi)</label>
+                    <label class="text-gray-700 font-bold py-2" for="">Highest Bid so far: <span id="highest-bid-amount"></span> <span id="highest-bid-unit">Mi</span></label>
+                    <label class="text-gray-700 font-bold py-2" for="">Highest Bid by: <span id="highest-bid-address"></span></label>
+
+                    <label class="text-gray-700 font-bold py-2" for="">Place Bid (in EIOTA)</label>
                     <input class="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline" type="number" min="0" placeholder="99" id="auction-bid-amount">
+
                     <div class="flex justify-between items-center my-4">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4" id="btn-add-bid" type="button">
                         Add my Bid
