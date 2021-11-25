@@ -1,5 +1,10 @@
 let svgHtml = '<svg version="1.1" id="inline-loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve"><circle fill="#2c2c2c" stroke="none" cx="6" cy="50" r="6"><animateTransform attributeName="transform" dur="1s" type="translate" values="0 15 ; 0 -15; 0 15" repeatCount="indefinite" begin="0.1" /></circle><circle fill="#4c4c4c" stroke="none" cx="30" cy="50" r="6"><animateTransform attributeName="transform" dur="1s" type="translate" values="0 10 ; 0 -10; 0 10" repeatCount="indefinite" begin="0.2" /></circle><circle fill="#c2c2c2" stroke="none" cx="54" cy="50" r="6"><animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.3" /></circle></svg>';
 
+let editor = ace.edit("editor");
+editor.setTheme("ace/theme/solarized_dark");  // https://github.com/ajaxorg/ace/tree/master/lib/ace/theme
+editor.session.setMode("ace/mode/solidity");
+
+loadContract(editor, "../contracts/evm/SimpleAuction.sol");
 
 (function () {
     // Loading Icons
@@ -63,4 +68,22 @@ $('#btn-add-bid').click(() => {
 
 function fetchCurrentState() {
     console.log('fetching current state...');
+}
+
+function loadContract(editor, file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                editor.session.setValue(allText);
+            }
+        }
+    }
+    rawFile.send(null);
 }
