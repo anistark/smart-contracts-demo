@@ -16,17 +16,152 @@ loadContract(editor, "../contracts/evm/SimpleAuction.sol");
     // fetchCurrentState()
 })();
 
+const auctionAddress = '0xC546360927C71E4f9996aa41220ce32a465abde2';
+const auctionAbi = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_biddingTime",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address payable",
+				"name": "_beneficiary",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "winner",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "AuctionEnded",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "bidder",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "HighestBidIncreased",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "auctionEnd",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "auctionEndTime",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "beneficiary",
+		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "bid",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "highestBid",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "highestBidder",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdraw",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+];
+
 window.addEventListener('load', async () => {
     if (window.ethereum) {
-        window.web3 = new Web3(window.ethereum);
-        try{
-            // ask user for permission
-            window.ethereum.enable();
-            // user approved permission
-        } catch (error) {
-            // user rejected permission
-            console.log('user rejected permission');
-        }
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        console.log('provider signer:', provider.getSigner());
+
+        window.auctionContract = new ethers.Contract(auctionAddress, auctionAbi, provider);
+        console.log('auctionContract:', window.auctionContract);
+
+        fetchCurrentState();
     }
     else if (window.Web3) {
         window.web3 = new Web3(window.Web3.currentProvider)
@@ -36,15 +171,15 @@ window.addEventListener('load', async () => {
         console.log('Non-Ethereum browser detected. You should consider trying MetaMask!')
     }
 
-    if (window.web3 && window.web3.currentProvider) {
-        console.log ('selected address:', window.web3.currentProvider.selectedAddress);
-    } else {
-        console.log('Web3 Not Injected! 😢');
-    }
+    // if (window.web3 && window.web3.currentProvider) {
+    //     console.log ('selected address:', window.web3.currentProvider.selectedAddress);
+    // } else {
+    //     console.log('Web3 Not Injected! 😢');
+    // }
 })
 
 function initPayButton() {
-    const paymentAddress = '0x3635Fc964e6fb314627587e7896387D6E63b1baf';
+    const paymentAddress = '0xC546360927C71E4f9996aa41220ce32a465abde2';
     const amountEth = $('#auction-bid-amount').val();
     console.log('to:', paymentAddress, "->", amountEth, 'eth');
     window.web3.eth.sendTransaction({
@@ -66,8 +201,15 @@ $('#btn-add-bid').click(() => {
     initPayButton()
 });
 
-function fetchCurrentState() {
+async function fetchCurrentState() {
     console.log('fetching current state...');
+    let highestBid = await window.auctionContract.highestBid();
+    console.log('highestBid:', highestBid);
+    document.getElementById("highest-bid-amount").innerHTML = highestBid;
+
+    let highestBidder = await window.auctionContract.highestBidder();
+    console.log('highestBidder:', highestBidder);
+    document.getElementById("highest-bid-address").innerHTML = highestBidder;
 }
 
 function loadContract(editor, file)
