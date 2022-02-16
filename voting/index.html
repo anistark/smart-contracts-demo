@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="https://icons-for-free.com/iconfiles/png/512/election+vote+voter+voting+icon-1320166092218302743.png" type="image/png">
+    <title>Voting</title>
+    <link rel="stylesheet" href="/assets/css/voting.css" />
+  </head>
+  <body>
+    <div style="display: none">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur
+              in="SourceGraphic"
+              result="blur"
+              stdDeviation="10"
+            />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"
+            />
+            <feComposite in2="goo" in="SourceGraphic" result="mix" />
+          </filter>
+        </defs>
+        <g
+          xmlns="http://www.w3.org/2000/svg"
+          id="ltmWrapper"
+          data-name="container"
+        >
+          <path
+            class="ltm-Line"
+            d="M0,0V94.85H25V25H406.76V386.76H153.29v25H431.76V0ZM25,119.66H0v292.1H128.47v-25H25Z"
+          />
+          <polygon
+            class="ltm-T"
+            points="90.46 144.44 129.09 144.44 129.09 292.14 153.91 292.14 153.91 144.44 192.54 144.44 192.54 119.62 90.46 119.62 90.46 144.44"
+          />
+          <polygon
+            class="ltm-M"
+            points="316.49 119.62 316.49 119.64 316.33 119.62 278.4 219.29 240.47 119.62 240.25 119.65 240.25 119.62 215.43 119.62 215.43 292.14 240.25 292.14 240.25 186.86 278.4 292.14 316.49 187.03 316.49 292.14 341.3 292.14 341.3 119.62 316.49 119.62"
+          />
+        </g>
+      </svg>
+    </div>
+    <nav>
+      <div class="nav-logo">
+        <img src="https://icons-for-free.com/iconfiles/png/512/election+vote+voter+voting+icon-1320166092218302743.png" alt="">
+      </div>
+      <div class="right-actions">
+        <!-- <button class="btn">button 1</button> -->
+        <button id="sResults" class="btn">Show Results</button>
+      </div>
+    </nav>
+    <section class="poll-wrapper">
+      <div class="choices-wrapper">
+        <div class="poll-item ch1">
+          <div class="blob-amount">
+            <div class="wave wave--back">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="wave wave--front">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="item-details">
+            <!-- <h3>Meet the amazing</h3> -->
+            <h1 id="vote-c1">Name 1</h1>
+            <!-- <h3>Short bio</h3> -->
+            <div class="btn vote" id="btn-vote-c1">Vote</div>
+          </div>
+          <!-- <button class="btn expand-btn">More Details</button> -->
+        </div>
+        <div class="poll-item ch2">
+          <div class="blob-amount">
+            <div class="wave wave--back">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="wave wave--front">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="item-details">
+            <!-- <h3>name</h3> -->
+            <h1 id="vote-c2">Name 2</h1>
+            <!-- <h3>some details</h3> -->
+            <div class="btn vote" id="btn-vote-c2">Vote</div>
+          </div>
+          <!-- <button class="btn expand-btn">expand</button> -->
+        </div>
+        <div class="poll-item ch3">
+          <div class="blob-amount">
+            <div class="wave wave--back">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="wave wave--front">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="item-details">
+            <!-- <h3>name</h3> -->
+            <h1 id="vote-c3">Name 3</h1>
+            <!-- <h3>some details</h3> -->
+            <div class="btn vote" id="btn-vote-c3">Vote</div>
+          </div>
+          <!-- <button class="btn expand-btn">expand</button> -->
+        </div>
+        <!-- <div class="poll-item ch4">
+          <div class="blob-amount">
+            <div class="wave wave--back">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="wave wave--front">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="item-details">
+            <h3>name</h3>
+            <h1>Larger name</h1>
+            <h3>some details</h3>
+            <div class="btn vote">Vote</div>
+          </div>
+          <button class="btn expand-btn">expand</button>
+        </div>
+        <div class="poll-item ch5">
+          <div class="blob-amount">
+            <div class="wave wave--back">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="wave wave--front">
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+              <div class="water">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 350 32"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M350,17.32V32H0V17.32C116.56,65.94,175-39.51,350,17.32Z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="item-details">
+            <h3>name</h3>
+            <h1>Larger name</h1>
+            <h3>some details</h3>
+            <div class="btn vote">Vote</div>
+          </div>
+          <button class="btn expand-btn">expand</button>
+        </div> -->
+      </div>
+    </section>
+    <section class="poll-details">
+      <i class="close-panel">close</i>
+      <div class="sample-poll">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, quo
+        repellat reprehenderit, maiores omnis vero vitae porro fuga praesentium
+        cum consectetur optio eos possimus recusandae temporibus assumenda nobis
+        sapiente numquam!
+      </div>
+    </section>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/assets/js/voting.js"></script>
+  </body>
+</html>
