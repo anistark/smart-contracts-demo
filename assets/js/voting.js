@@ -35,3 +35,6 @@ $(".vote").on("click", function () {
 //     $(this).parent().removeClass("open");
 //     $("#ltmWrapper").css("fill", "#fff");
 // });
+
+// on load
+
